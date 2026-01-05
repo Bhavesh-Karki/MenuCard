@@ -1,0 +1,61 @@
+:root {
+  --card-border-width: 2px;
+  --card-border-style: solid;
+  --card-border-color: #dee2e6;
+  --card-border-radius: 8px;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --card-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.detail-container {
+  padding: 2rem;
+}
+
+.card-section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.menu-card {
+  width: 18rem;
+  border: var(--card-border-width) var(--card-border-style) var(--card-border-color) !important;
+  border-radius: var(--card-border-radius) !important;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-hover-shadow);
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.menu-card .card-body {
+  padding: 1.25rem;
+}
+
+.menu-card .card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.menu-card .card-text {
+  font-size: 0.95rem;
+  color: #6c757d;
+  margin-bottom: 1rem;
+  min-height: 60px;
+}
+button {
+  cursor: pointer;
+  
+}

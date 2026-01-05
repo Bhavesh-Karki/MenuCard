@@ -5,11 +5,13 @@ import Css from './ArrayMethods.css';
 
 function ArrayMethods() {
   return (
-<ButtonGroup aria-label="Basic example">
-  <Button variant="secondary" className="custom-btn">Filter</Button>
-  <Button variant="secondary" className="custom-btn">Map</Button>
-  <Button variant="secondary" className="custom-btn">Reduce</Button>
-</ButtonGroup>
+    <div className="array-methods-container">
+      <ButtonGroup aria-label="Basic example" className="button-group-custom">
+        <Button variant="secondary" className="custom-btn">Veg</Button> {/* use filter method here  */}
+        <Button variant="secondary" className="custom-btn">Non-veg</Button> {/* use map method in this  */}
+        <Button variant="secondary" className="custom-btn">Dessert</Button> {/* use reduce method here */}
+      </ButtonGroup>
+    </div>
   );
 }
 
