@@ -5,6 +5,18 @@
   --card-border-radius: 8px;
   --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   --card-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --menu-button-bg: #007bff;
+  --menu-button-hover-bg: #0056b3;
+  --menu-button-color: #ffffff;
+  --menu-button-padding: 0.6rem 1.5rem;
+  --menu-button-border-radius: 6px;
+  --menu-button-transition: all 0.3s ease;
+  --menu-button-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+  --menu-button-hover-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
+  --card-heading-color: #212529;
+  --card-heading-font-size: 1.35rem;
+  --card-heading-font-weight: 700;
+  --card-heading-margin-bottom: 0.75rem;
 }
 
 .detail-container {
@@ -44,9 +56,13 @@
 }
 
 .menu-card .card-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
+  font-size: var(--card-heading-font-size);
+  font-weight: var(--card-heading-font-weight);
+  color: var(--card-heading-color);
+  margin-bottom: var(--card-heading-margin-bottom);
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
 }
 
 .menu-card .card-text {
@@ -55,7 +71,30 @@
   margin-bottom: 1rem;
   min-height: 60px;
 }
-button {
-  cursor: pointer;
-  
+/* Menu Card Order Now Buttons */
+.menu-card .btn {
+  background-color: var(--menu-button-bg) !important;
+  color: var(--menu-button-color) !important;
+  border: none !important;
+  padding: var(--menu-button-padding) !important;
+  border-radius: var(--menu-button-border-radius) !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  cursor: pointer !important;
+  transition: var(--menu-button-transition) !important;
+  box-shadow: var(--menu-button-shadow) !important;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.menu-card .btn:hover {
+  background-color: var(--menu-button-hover-bg) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--menu-button-hover-shadow) !important;
+}
+
+.menu-card .btn:active {
+  transform: translateY(0);
+  box-shadow: var(--menu-button-shadow) !important;
 }

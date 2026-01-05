@@ -1,29 +1,40 @@
 :root {
   --button-border-radius: 6px;
-  --button-padding: 0.5rem 1.5rem;
+  --button-padding: 0.6rem 1.8rem;
   --button-margin: 0.75rem;
   --button-transition: all 0.3s ease;
   --button-hover-transform: translateY(-2px);
   --button-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   --button-hover-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   --button-gap: 0.75rem;
-  
+  --filter-button-bg: #6c757d;
+  --filter-button-hover-bg: #5a6268;
+  --filter-button-color: #ffffff;
+  --filter-button-font-weight: 600;
+  --filter-button-font-size: 0.95rem;
+  --filter-button-letter-spacing: 0.5px;
 }
 
 .custom-btn {
   border-radius: var(--button-border-radius) !important;
   padding: var(--button-padding) !important;
   transition: var(--button-transition) !important;
-  box-shadow: var(--button-shadow);
-  font-weight: 500;
+  box-shadow: var(--button-shadow) !important;
+  font-weight: var(--filter-button-font-weight) !important;
+  font-size: var(--filter-button-font-size) !important;
+  letter-spacing: var(--filter-button-letter-spacing) !important;
   border: 1px solid #6c757d !important;
+  background-color: var(--filter-button-bg) !important;
+  color: var(--filter-button-color) !important;
+  text-transform: uppercase;
 }
 
 .custom-btn:hover {
   transform: var(--button-hover-transform);
-  box-shadow: var(--button-hover-shadow);
-  background-color: #5a6268 !important;
+  box-shadow: var(--button-hover-shadow) !important;
+  background-color: var(--filter-button-hover-bg) !important;
   border-color: #545b62 !important;
+  color: var(--filter-button-color) !important;
 }
 
 .custom-btn:active {
