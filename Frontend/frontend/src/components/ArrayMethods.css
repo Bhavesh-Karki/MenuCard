@@ -1,61 +1,26 @@
 :root {
-  --button-border-radius: 6px;
-  --button-padding: 0.6rem 1.8rem;
-  --button-margin: 0.75rem;
-  --button-transition: all 0.3s ease;
-  --button-hover-transform: translateY(-2px);
-  --button-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --button-hover-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  --button-gap: 0.75rem;
-  --filter-button-bg: #6c757d;
-  --filter-button-hover-bg: #5a6268;
-  --filter-button-color: #ffffff;
-  --filter-button-font-weight: 600;
-  --filter-button-font-size: 0.95rem;
-  --filter-button-letter-spacing: 0.5px;
+  --btn-bg: Orange;
+  --btn-bg-hover: DarkOrange;
+  --btn-text: #ffffff;
+  --btn-radius: 6px;
+  --btn-padding-y: 10px;
+  --btn-padding-x: 20px;
+  --btn-font-size: 16px;
+  --btn-transition: 0.3s ease;
+  --btn-font-family: 'Times New Roman', Times, serif;
 }
 
 .custom-btn {
-  border-radius: var(--button-border-radius) !important;
-  padding: var(--button-padding) !important;
-  transition: var(--button-transition) !important;
-  box-shadow: var(--button-shadow) !important;
-  font-weight: var(--filter-button-font-weight) !important;
-  font-size: var(--filter-button-font-size) !important;
-  letter-spacing: var(--filter-button-letter-spacing) !important;
-  border: 1px solid #6c757d !important;
-  background-color: var(--filter-button-bg) !important;
-  color: var(--filter-button-color) !important;
-  text-transform: uppercase;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  font-size: var(--btn-font-size);
+  border: none;
+  border-radius: var(--btn-radius);
+  cursor: pointer;
+  transition: var(--btn-transition);
 }
 
 .custom-btn:hover {
-  transform: var(--button-hover-transform);
-  box-shadow: var(--button-hover-shadow) !important;
-  background-color: var(--filter-button-hover-bg) !important;
-  border-color: #545b62 !important;
-  color: var(--filter-button-color) !important;
+  background-color: var(--btn-bg-hover);
 }
-
-.custom-btn:active {
-  transform: translateY(0);
-  box-shadow: var(--button-shadow);
-}
-
-.button-group-custom {
-  display: flex !important;
-  gap: var(--button-gap) !important;
-}
-
-.button-group-custom > .custom-btn {
-  margin: 0 !important;
-}
-
-.array-methods-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 1rem 0;
-}
-
