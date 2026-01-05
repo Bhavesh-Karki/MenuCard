@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import pancakeImage from '../assets/pancake.jpeg';
+// import pancakeImage from '../assets/pancake.jpeg';
 import './Detail.css';
 
 function Detail() {
@@ -9,7 +9,7 @@ function Detail() {
       {/* First Section */}
       <div className="card-section">
         <Card className="menu-card" id="1">
-          <Card.Img variant="top" src={pancakeImage} className="card-image" />
+          <Card.Img variant="top" src="https://imgs.search.brave.com/EbDb081M9wHE_O2-BZgVNuK3osOjgPz2Vhu73YdrKPo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE1/NjUyOTk1NDM5MjMt/MzdkZDM3ODg3NDQy/P2ZtPWpwZyZxPTYw/Jnc9MzAwMCZpeGxp/Yj1yYi00LjEuMCZp/eGlkPU0zd3hNakEz/ZkRCOE1IeHpaV0Z5/WTJoOE0zeDhjR0Z1/WTJGclpYeGxibnd3/Zkh3d2ZIeDhNQT09" className="card-image" alt='pancake' />
           <Card.Body>
             <Card.Title>Delicious Pancake</Card.Title>
             <Card.Text>
