@@ -2,12 +2,32 @@
 import './App.css';
 import ArrayMethods from './components/ArrayMethods';
 import Detail from './components/Detail';
+import OrderHistory from "./components/OrderHistory";
 import { useEffect, useState } from 'react';
 
 
 function App() {
   const [menu, setMenu] = useState([]);
   const [filteredMenu, setFilteredMenu] = useState([]);
+
+  const [orders, setOrders] = useState([]);
+const [showOrderHistory, setShowOrderHistory] = useState(false);
+
+const fetchOrderHistory = async () => {
+  try {
+    const res = await fetch("http://localhost:5000/api/orders");
+    const data = await res.json();
+    setOrders(data);
+    setShowOrderHistory(true);
+  } catch (err) {
+    console.error("Order history error:", err);
+  }
+};
+
+const hideOrderHistory = () => {
+  setShowOrderHistory(false);
+};
+
 
   useEffect(() => {
     fetch(
@@ -52,8 +72,20 @@ function App() {
 
       <hr className="menu-divider" />
 
-      <ArrayMethods menu={menu} setFilteredMenu={setFilteredMenu} />
-      <Detail menu={filteredMenu} handleOrderNow={handleOrderNow} />
+      <ArrayMethods
+  menu={menu}
+  setFilteredMenu={setFilteredMenu}
+  onOrderHistoryClick={fetchOrderHistory}
+  onMenuClick={hideOrderHistory}
+/>
+
+
+{showOrderHistory ? (
+  <OrderHistory orders={orders} />
+) : (
+  <Detail menu={filteredMenu} handleOrderNow={handleOrderNow} />
+)}
+
     </div>
   );
 }

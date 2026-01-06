@@ -3,47 +3,39 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import React from 'react';
 import './ArrayMethods.css';
 
-function ArrayMethods({ menu, setFilteredMenu }) {
+function ArrayMethods({ menu, setFilteredMenu, onOrderHistoryClick, onMenuClick }) {
+  const showAll = () => {
+    setFilteredMenu(menu);
+    onMenuClick();
+  };
+
   const showVeg = () => {
-    const vegItems = menu.filter(item => item.category === 'veg');
-    setFilteredMenu(vegItems);
+    setFilteredMenu(menu.filter(item => item.category === "veg"));
+    onMenuClick();
   };
 
   const showNonVeg = () => {
-    const nonVegItems = menu.filter(item => item.category === 'non-veg');
-    setFilteredMenu(nonVegItems);
+    setFilteredMenu(menu.filter(item => item.category === "non-veg"));
+    onMenuClick();
   };
 
   const showDessert = () => {
-    const dessertItems = menu.filter(item => item.category === 'dessert');
-    setFilteredMenu(dessertItems);
-  };
-
-  const showAll = () => {
-    setFilteredMenu(menu);
+    setFilteredMenu(menu.filter(item => item.category === "dessert"));
+    onMenuClick();
   };
 
   return (
     <div className="array-methods-container">
-      <ButtonGroup aria-label="Basic example" className="button-group-custom">
-        <Button variant="secondary" className="custom-btn" onClick={showAll}>
-          All
-        </Button>
-        <Button variant="secondary" className="custom-btn" onClick={showVeg}>
-          Veg
-        </Button>
-        <Button variant="secondary" className="custom-btn" onClick={showNonVeg}>
-          Non-Veg
-        </Button>
-        <Button variant="secondary" className="custom-btn" onClick={showDessert}>
-          Dessert
-        </Button>
-        <Button variant="secondary" className="custom-btn">
-          Order History
-        </Button>
-      </ButtonGroup>
+    <ButtonGroup className="button-group-custom">
+      <Button onClick={showAll} className='custom-btn' variant='secondary'>All</Button>
+      <Button onClick={showVeg} className='custom-btn' variant='secondary'>Veg</Button>
+      <Button onClick={showNonVeg} className='custom-btn' variant='secondary'>Non-Veg</Button>
+      <Button onClick={showDessert} className='custom-btn' variant='secondary'>Dessert</Button>
+      <Button onClick={onOrderHistoryClick} className='custom-btn' variant='secondary'>Order History</Button>
+    </ButtonGroup>
     </div>
   );
 }
+
 
 export default ArrayMethods;
