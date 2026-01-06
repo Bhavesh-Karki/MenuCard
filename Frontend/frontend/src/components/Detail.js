@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import pancakeImage from '../assets/pancake.jpeg';
 import './Detail.css';
 
-function Detail({ menu }) {
+function Detail({ menu , handleOrderNow}) {
   return (
     <div className="detail-container">
       <div className="card-section">
@@ -23,7 +23,9 @@ function Detail({ menu }) {
               <Card.Title>{item.title}</Card.Title>
               <Card.Text>{item.description}</Card.Text>
               <p>Price: ${item.price}</p>
-              <Button variant="primary">Order Now</Button>
+              <Button variant="primary" onClick={() => handleOrderNow(item)}>
+              Order Now
+              </Button>
             </Card.Body>
           </Card>
         ))}
