@@ -4,7 +4,7 @@
     "title": "Delicious Pancake",
     "price": 120,
     "category": "dessert",
-    "image": "https://images.unsplash.com/photo-1589987606177-6f1f7a0b5fc5?auto=format&fit=crop&w=800&q=80",
+    "image": "https://github.com/john-smilga/javascript-basic-projects/blob/master/08-menu/setup/images/item-1.jpeg",
     "description":" Pancake with syrup and butter. A delightful breakfast treat to start your day!"
   },
   {
