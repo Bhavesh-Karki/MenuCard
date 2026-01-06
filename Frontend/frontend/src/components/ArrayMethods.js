@@ -38,6 +38,9 @@ function ArrayMethods({ menu, setFilteredMenu }) {
         <Button variant="secondary" className="custom-btn" onClick={showDessert}>
           Dessert
         </Button>
+        <Button variant="secondary" className="custom-btn">
+          Order History
+        </Button>
       </ButtonGroup>
     </div>
   );
