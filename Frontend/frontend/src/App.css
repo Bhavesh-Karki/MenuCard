@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.menu-divider {
+  border: none;
+  border-top: 4px solid orange;
+  width: 60%;
+  margin: 0 auto 24px auto;
+  opacity: 0.9;
+}

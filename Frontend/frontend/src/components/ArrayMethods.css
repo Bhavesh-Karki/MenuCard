@@ -8,6 +8,7 @@
   --btn-font-size: 16px;
   --btn-transition: 0.3s ease;
   --btn-font-family: 'Times New Roman', Times, serif;
+  --btn-gap: 12px;
 }
 
 .custom-btn {
@@ -15,6 +16,7 @@
   color: var(--btn-text);
   padding: var(--btn-padding-y) var(--btn-padding-x);
   font-size: var(--btn-font-size);
+  font-family: var(--btn-font-family);
   border: none;
   border-radius: var(--btn-radius);
   cursor: pointer;
@@ -23,4 +25,21 @@
 
 .custom-btn:hover {
   background-color: var(--btn-bg-hover);
+}
+
+.array-methods-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.button-group-custom {
+  display: flex !important;
+  gap: var(--btn-gap) !important;
+}
+
+.button-group-custom > .custom-btn {
+  margin: 0 !important;
 }

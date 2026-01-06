@@ -23,10 +23,10 @@ function App() {
 
     return (
     <div className="App">
-    <h1 style={{ color: "Black", fontSize: "32px", textAlign: "center", fontWeight: "bold", marginBottom: "20px", fontFamily: "Times New Roman"}}>
-  MENU CARD
-</h1>
-      <hr />
+    <h1 style={{ color: "black" , fontSize: "32px", textAlign: "center", fontWeight: "bold", marginBottom: "12px", fontFamily: "Times New Roman"}}>
+      MENU CARD
+    </h1>
+      <hr className="menu-divider" />
       <ArrayMethods menu={menu} setFilteredMenu={setFilteredMenu} />
       <Detail menu={filteredMenu} />
     </div>
