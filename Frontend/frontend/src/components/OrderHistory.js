@@ -31,7 +31,9 @@ function OrderHistory({ orders }) {
                 <td>₹{order.price}</td>
                 <td>{order.quantity}</td>
                 <td>
-                  {new Date(order.created_at).toLocaleString()}
+                  {order.order_date
+                    ? new Date(order.order_date).toLocaleString()
+                    : "—"}
                 </td>
               </tr>
             ))
