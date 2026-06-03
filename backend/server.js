@@ -1,91 +1,44 @@
-const express = require("express");
-const cors = require("cors");
-const { Pool } = require("pg");
+require('dotenv').config();
+
+const express = require('express');
+const cors = require('cors');
+const pool = require('./database/pool');
+const authRoutes = require('./routes/authRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
-/* =========================
-   Middleware
-========================= */
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CLIENT_ORIGIN || 'http://localhost:3000',
+    credentials: true,
+  })
+);
 app.use(express.json());
 
-/* =========================
-   PostgreSQL Connection
-========================= */
-const pool = new Pool({
-  host: "localhost",
-  user: "postgres",          // change if different
-  password: "bhavesh", // your postgres password
-  database: "food_order_db",
-  port: 5432,
+app.get('/', (req, res) => {
+  res.send('Food ordering backend is running');
 });
 
-pool.connect()
-  .then(() => console.log("PostgreSQL Connected Successfully"))
-  .catch((err) => console.error("PostgreSQL connection failed:", err));
-
-/* =========================
-   Test Route
-========================= */
-app.get("/", (req, res) => {
-  res.send("Backend is running");
-});
-
-/* =========================
-   PLACE ORDER API
-========================= */
-app.post("/api/order", async (req, res) => {
-  const { user_id, item_name, price, quantity } = req.body;
-
-  if (!item_name || !price) {
-    return res.status(400).json({
-      message: "Invalid order data",
-    });
-  }
-
+app.get('/api/health', async (req, res) => {
   try {
-    const result = await pool.query(
-      `INSERT INTO orders (user_id, item_name, price, quantity)
-       VALUES ($1, $2, $3, $4)
-       RETURNING id`,
-      [user_id, item_name, price, quantity]
-    );
-
-    res.status(201).json({
-      message: "Order placed successfully",
-      orderId: result.rows[0].id,
-    });
-  } catch (err) {
-    console.error("Insert error:", err);
-    res.status(500).json({
-      message: "Database error",
-    });
+    await pool.query('SELECT 1');
+    res.json({ status: 'ok', database: 'connected' });
+  } catch (error) {
+    res.status(500).json({ status: 'error', database: 'unavailable' });
   }
 });
 
-/* =========================
-   ORDER HISTORY API
-========================= */
-app.get("/api/orders", async (req, res) => {
-  try {
-    const result = await pool.query(
-      "SELECT * FROM orders ORDER BY order_date DESC"
-    );
+app.use('/api/auth', authRoutes);
+app.use('/api/orders', orderRoutes);
 
-    res.status(200).json(result.rows);
-  } catch (err) {
-    console.error("Fetch orders error:", err);
-    res.status(500).json({
-      message: "Database error",
-    });
-  }
+// Backward compatibility for the original frontend endpoint.
+app.post('/api/order', (req, res, next) => {
+  req.url = '/';
+  orderRoutes(req, res, next);
 });
 
-/* =========================
-   Start Server
-========================= */
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });

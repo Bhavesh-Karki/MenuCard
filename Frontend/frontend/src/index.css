@@ -1,13 +1,66 @@
+:root {
+  --bg: #fff8f2;
+  --surface: #ffffff;
+  --surface-strong: #16120f;
+  --text: #211a16;
+  --muted: #70645d;
+  --brand: #e4432f;
+  --brand-dark: #b82e20;
+  --accent: #f8b84e;
+  --success: #1e8f62;
+  --border: rgba(33, 26, 22, 0.12);
+  --shadow: 0 24px 60px rgba(41, 27, 16, 0.16);
+  --soft-shadow: 0 16px 34px rgba(41, 27, 16, 0.12);
+  --radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, Poppins, Montserrat, "Segoe UI", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+button,
+input {
+  font: inherit;
+}
+
+button {
+  letter-spacing: 0;
+}
+
+a {
+  color: inherit;
+}
+
+.ui-icon {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: 0 0 auto;
+}
+
+.star-icon {
+  fill: currentColor;
+  stroke-width: 1.5;
+}
+
+.logo-icon {
+  fill: currentColor;
+  stroke: none;
 }

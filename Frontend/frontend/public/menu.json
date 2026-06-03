@@ -4,63 +4,216 @@
     "title": "Delicious Pancake",
     "price": 120,
     "category": "dessert",
+    "rating": 4.7,
     "image": "https://imgs.search.brave.com/EbDb081M9wHE_O2-BZgVNuK3osOjgPz2Vhu73YdrKPo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE1/NjUyOTk1NDM5MjMt/MzdkZDM3ODg3NDQy/P2ZtPWpwZyZxPTYw/Jnc9MzAwMCZpeGxp/Yj1yYi00LjEuMCZp/eGlkPU0zd3hNakEz/ZkRCOE1IeHpaV0Z5/WTJoOE0zeDhjR0Z1/WTJGclpYeGxibnd3/Zkh3d2ZIeDhNQT09",
-    "description":" Pancake with syrup and butter. A delightful breakfast treat to start your day!"
+    "description": "Pancake with syrup and butter. A delightful breakfast treat to start your day."
   },
   {
     "id": 2,
     "title": "Burger",
     "price": 150,
     "category": "veg",
+    "rating": 4.5,
     "image": "https://raw.githubusercontent.com/john-smilga/javascript-basic-projects/master/08-menu/final/images/item-2.jpeg",
-    "description" : "Veg or Non-veg cheese burger with fresh lettuce and tomato. A tasty and satisfying meal!"
+    "description": "Cheese burger with fresh lettuce and tomato. A tasty and satisfying meal."
   },
   {
     "id": 3,
     "title": "Grilled Chicken",
     "price": 220,
     "category": "non-veg",
+    "rating": 4.8,
     "image": "https://raw.githubusercontent.com/john-smilga/javascript-basic-projects/refs/heads/master/08-menu/final/images/item-10.jpeg",
-    "description":"Grilled chicken with spices and herbs. A flavorful dish that's both healthy and delicious!"
+    "description": "Grilled chicken with spices and herbs. Flavorful, filling, and balanced."
   },
   {
     "id": 4,
     "title": "French Fries",
     "price": 80,
     "category": "veg",
+    "rating": 4.4,
     "image": "https://imgs.search.brave.com/ectHTxT9ESItQhMnntN9qeuMcPBcPoxenBaUNt4wVOo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9oeWZ1/bmZvb2RzLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyNC8w/NS9TdXBlci1Dcmlz/cHktQ29hdGVkLUZy/ZW5jaC1Gcmllc19I/aWdoLVJlcy0xLnBu/Zw",
-    "description":"Crispy golden fries with the perfect amount of salt. The ultimate side dish for any meal!"
+    "description": "Crispy golden fries with the perfect amount of salt."
   },
   {
     "id": 5,
     "title": "Pizza",
     "price": 250,
     "category": "veg",
+    "rating": 4.9,
     "image": "https://imgs.search.brave.com/q2oVlhIfOcly1-RhZ7QBMDnvbKmcTjU-kHIPqm6ovn0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/ZG9taW5vcy5jby5p/bi90aGVtZTIvZnJv/bnQvaW1hZ2VzL21l/bnUtaW1hZ2VzL215/LXBpenphbWFuaWEu/d2VicA",
-    "description" : "Freshly baked pizza with your favorite toppings. Hot, cheesy, and absolutely delicious!"
+    "description": "Freshly baked pizza with your favorite toppings. Hot, cheesy, and delicious."
   },
   {
     "id": 6,
     "title": "Pasta",
     "price": 200,
     "category": "veg",
+    "rating": 4.6,
     "image": "https://imgs.search.brave.com/j9f85j5w8T2-9_VmY536adsqAAFFLnrAPRbTGxDt1Q0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMDEv/ODI2Lzk2MS9zbWFs/bC9zYXV0ZWVkLW1h/Y2Fyb25pLXBhc3Rh/LWluLXRoZS1wYW4t/ZnJlZS1waG90by5q/cGc",
-    "description" : " Creamy pasta with rich sauce and herbs. A comforting meal that warms your soul!"
+    "description": "Creamy pasta with rich sauce and herbs. Comfort in every bite."
   },
   {
     "id": 7,
-    "title": "Salad",
+    "title": "Garden Salad",
     "price": 120,
     "category": "veg",
+    "rating": 4.3,
     "image": "https://imgs.search.brave.com/avXk_mNo2RY05NRu185UZhtzgaB8fpJ8hH51CyokBTo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNS8x/Mi8xNi8wOS80MC9z/YWxhZC1wbGF0ZS0x/MDk1NjQ4XzY0MC5q/cGc",
-    "description" : " Fresh mixed greens with seasonal vegetables and dressing. Healthy and refreshing!"
+    "description": "Fresh mixed greens with seasonal vegetables and dressing."
   },
   {
     "id": 8,
     "title": "Ice Cream",
     "price": 90,
     "category": "dessert",
+    "rating": 4.8,
     "image": "https://imgs.search.brave.com/IAQk1hEdb7aVC7i8Z0dupMCGmZySIkm8EWbyzDfAlzQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA1LzU4LzEzLzAz/LzM2MF9GXzU1ODEz/MDMyM19HNTN6N0Fy/a2FiSlhydlNBUVlp/THhodXFOWE4weWVp/di5qcGc",
-    "description" : "Creamy and smooth ice cream in various flavors. A sweet treat to satisfy your dessert cravings!"
-  } 
+    "description": "Creamy and smooth ice cream in classic dessert flavors."
+  },
+  {
+    "id": 9,
+    "title": "Paneer Tikka",
+    "price": 180,
+    "category": "veg",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=900&q=80",
+    "description": "Smoky paneer cubes marinated with spices and grilled to perfection."
+  },
+  {
+    "id": 10,
+    "title": "Chicken Biryani",
+    "price": 260,
+    "category": "non-veg",
+    "rating": 4.9,
+    "image": "https://as2.ftcdn.net/v2/jpg/07/17/99/31/1000_F_717993139_kxPYtqfBHeEfZECdD4FtFSA5abyAfXFw.jpg",
+    "description": "Aromatic rice layered with tender chicken and warm spices."
+  },
+  {
+    "id": 11,
+    "title": "Veg Momos",
+    "price": 110,
+    "category": "veg",
+    "rating": 4.4,
+    "image": "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop&w=900&q=80",
+    "description": "Steamed dumplings filled with vegetables and served with spicy dip."
+  },
+  {
+    "id": 12,
+    "title": "Modak",
+    "price": 130,
+    "category": "dessert",
+    "rating": 4.8,
+    "image": "https://imgs.search.brave.com/m37zWMBQ10CCJB12tiFRlUNTAEgOBH96lBnnI01LTN0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/dmVncmVjaXBlc29m/aW5kaWEuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDIwLzA4/L21vZGFrLXJlY2lw/ZS0xYS0yODB4Mjgw/LmpwZw",
+    "description": "A traditional Indian sweet made with rice flour and jaggery."
+  },
+  {
+    "id": 13,
+    "title": "Fish Fry",
+    "price": 240,
+    "category": "non-veg",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80",
+    "description": "Crisp fried fish with lemon, herbs, and a savory spice rub."
+  },
+  {
+    "id": 14,
+    "title": "Tandoori Chicken",
+    "price": 280,
+    "category": "non-veg",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=900&q=80",
+    "description": "Charred tandoori chicken with yogurt marinade and bold spices."
+  },
+  {
+    "id": 15,
+    "title": "Gulab Jamun",
+    "price": 100,
+    "category": "dessert",
+    "rating": 4.7,
+    "image": "https://imgs.search.brave.com/bdX3pJLphk9OkaprF_Yf8ix9FGxtBI5sEuLckMfBDzU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdC5k/ZXBvc2l0cGhvdG9z/LmNvbS8xMDY5NDY4/LzE4MTMvaS80NTAv/ZGVwb3NpdHBob3Rv/c18xODEzMTUwOS1z/dG9jay1waG90by1p/bmRpYW4tZGVzc2Vy/dC1ndWxhYi1qYW11/bi5qcGc",
+    "description": "Soft syrup-soaked dessert served warm for a classic finish."
+  },
+  {
+    "id": 16,
+    "title": "Masala Dosa",
+    "price": 140,
+    "category": "veg",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=900&q=80",
+    "description": "Crisp dosa filled with masala potato and served with chutney."
+  },
+  {
+    "id": 17,
+    "title": "Butter Chicken",
+    "price": 300,
+    "category": "non-veg",
+    "rating": 4.9,
+    "image": "https://imgs.search.brave.com/YANI1yvjLAtC9Gel-y5ggKDP_2D9xaLqBR9bieSRJWQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA0LzczLzY5Lzkz/LzM2MF9GXzQ3MzY5/OTM3OF9qWmg3Nll1/VlNLV1NMVnBrdk9O/amV2eUZJTm1GdVJ5/Ri5qcGc",
+    "description": "Rich and creamy butter chicken with a blend of spices."
+  },
+  {
+    "id": 18,
+    "title": "Veggie Wrap",
+    "price": 130,
+    "category": "veg",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=80",
+    "description": "Whole wheat wrap filled with fresh vegetables and hummus."
+  },
+  {
+    "id": 19,
+    "title": "Ras Malai",
+    "price": 150,
+    "category": "dessert",
+    "rating": 4.7,
+    "image": "https://media.istockphoto.com/id/1441840881/photo/appetizing-traditional-ras-malai-indian-sweet-dish-soft-paneer-balls-immersed-in-creamy-milk.jpg?s=612x612&w=0&k=20&c=9Z7seuhg0eEjvUq8ykjIftkfydKsNLsLq-smHBvZwMg=",
+    "description": "Soft cheese dumplings soaked in sweetened milk and flavored with cardamom."
+  },
+  {
+    "id": 20,
+    "title": "Chicken Pizza",
+    "price": 220,
+    "category": "non-veg",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80",
+    "description": "Marinated chicken with a blend of spices and a crispy crust."
+   },
+   {
+    "id": 21,
+    "title": "Non-Veg Burger",
+    "price": 160,
+    "category": "non-veg",
+    "rating": 4.4,
+    "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80",
+    "description": "Grilled non-veg patty with lettuce, tomato, and special sauce."
+   },
+   {
+    "id": 22,
+    "title": "Chocolate Lava Cake",
+    "price": 180,
+    "category": "dessert",
+    "rating": 4.9,
+    "image": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=900&q=80",
+    "description": "Warm chocolate cake with a gooey molten center."
+   },
+   {
+    "id": 23,
+    "title": "Grilled Salmon",
+    "price": 350,
+    "category": "non-veg",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80",
+    "description": "Fresh salmon fillet grilled with lemon and herbs."
+   },
+   {
+    "id": 24,
+    "title": "Caesar Salad",
+    "price": 140,
+    "category": "veg",
+    "rating": 4.5,
+    "image": "https://imgs.search.brave.com/mUvLY5rGEflr8gaaIa9xatJYfFrZgpKA22HJ3IqV1Bw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMzYv/MzUzLzY1Ny9zbWFs/bC9haS1nZW5lcmF0/ZWQtY2Flc2FyLXNh/bGFkLWluLWJvd2wt/b24tdHJhbnNwYXJl/bnQtYmFja2dyb3Vu/ZC1pbWFnZS1wbmcu/cG5n",
+    "description": "Crisp romaine lettuce with Caesar dressing and croutons."
+   }
+  
 ]

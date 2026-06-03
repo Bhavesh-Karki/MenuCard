@@ -22,7 +22,7 @@ function Detail({ menu , handleOrderNow}) {
             <Card.Body>
               <Card.Title>{item.title}</Card.Title>
               <Card.Text>{item.description}</Card.Text>
-              <p>Price: ${item.price}</p>
+              <p>Price: ₹{item.price}</p>
               <Button variant="primary" onClick={() => handleOrderNow(item)}>
               Order Now
               </Button>

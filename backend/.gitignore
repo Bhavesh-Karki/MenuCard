@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+#database items
+001_enhanced_food_ordering_schema.sql
+schema.sql
+robots.txt
