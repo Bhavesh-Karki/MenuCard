@@ -1,7 +1,8 @@
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import ProfileMenu from '../Profile/ProfileMenu';
-import { MenuIcon, MenuCardLogoIcon } from '../Icons';
+import menuCardLogo from '../../assets/MenuCardLogo.png';
+import { MenuIcon } from '../Icons';
 
 function AppNavbar({ user, onMenuClick, onOrderHistory, onLogout, onHome }) {
   return (
@@ -21,7 +22,7 @@ function AppNavbar({ user, onMenuClick, onOrderHistory, onLogout, onHome }) {
           onClick={onHome}
           aria-label="Home"
         >
-          <MenuCardLogoIcon />
+          <img src={menuCardLogo} alt="" />
         </button>
 
         <button type="button" className="brand-button" onClick={onHome}>

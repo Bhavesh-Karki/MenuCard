@@ -10,39 +10,31 @@ function createToken() {
 }
 
 async function register(req, res) {
-  const { name, email, password } = req.body;
+  const { name, full_name, email, password, phone_number, address } = req.body;
+  const fullName = (full_name || name || '').trim();
 
-  if (!name || !email || !password) {
+  if (!fullName || !email || !password) {
     return res.status(400).json({ message: 'Name, email, and password are required.' });
   }
 
   try {
     const passwordHash = hashPassword(password);
     const token = createToken();
-    const client = await pool.connect();
+    const userResult = await pool.query(
+      `INSERT INTO users (full_name, email, password, phone_number, address)
+       VALUES ($1, $2, $3, $4, $5)
+       RETURNING id, full_name AS name, email, phone_number, address, created_at`,
+      [
+        fullName,
+        email.trim().toLowerCase(),
+        passwordHash,
+        phone_number || null,
+        address || null,
+      ]
+    );
 
-    try {
-      await client.query('BEGIN');
-      const userResult = await client.query(
-        `INSERT INTO users (name, email, password_hash)
-         VALUES ($1, $2, $3)
-         RETURNING id, name, email, created_at`,
-        [name, email.toLowerCase(), passwordHash]
-      );
-      await client.query(
-        `INSERT INTO user_sessions (user_id, token)
-         VALUES ($1, $2)`,
-        [userResult.rows[0].id, token]
-      );
-      await client.query('COMMIT');
-
-      return res.status(201).json({ user: userResult.rows[0], token });
-    } catch (error) {
-      await client.query('ROLLBACK');
-      throw error;
-    } finally {
-      client.release();
-    }
+    console.log(`✅ Registration successful for email: ${userResult.rows[0].email} (ID: ${userResult.rows[0].id})`);
+    return res.status(201).json({ user: userResult.rows[0], token });
   } catch (error) {
     if (error.code === '23505') {
       return res.status(409).json({ message: 'Email already exists.' });
@@ -62,27 +54,23 @@ async function login(req, res) {
 
   try {
     const userResult = await pool.query(
-      `SELECT id, name, email, password_hash, created_at
+      `SELECT id, full_name AS name, email, password, phone_number, address, created_at
        FROM users
-       WHERE email = $1 OR LOWER(name) = LOWER($1)
+       WHERE LOWER(email) = LOWER($1) OR LOWER(full_name) = LOWER($1)
        LIMIT 1`,
-      [identifier.toLowerCase()]
+      [identifier.trim().toLowerCase()]
     );
 
     const user = userResult.rows[0];
 
-    if (!user || user.password_hash !== hashPassword(password)) {
-      return res.status(401).json({ message: 'Invalid credentials.' });
+    if (!user || user.password !== hashPassword(password)) {
+      return res.status(401).json({ message: 'Invalid Username or Password.' });
     }
 
     const token = createToken();
-    await pool.query(
-      `INSERT INTO user_sessions (user_id, token)
-       VALUES ($1, $2)`,
-      [user.id, token]
-    );
 
-    delete user.password_hash;
+    console.log(`✅ Login successful for email: ${user.email} (ID: ${user.id})`);
+    delete user.password;
     return res.json({ user, token });
   } catch (error) {
     console.error('Login error:', error);
@@ -91,12 +79,6 @@ async function login(req, res) {
 }
 
 async function logout(req, res) {
-  const { token } = req.body;
-
-  if (token) {
-    await pool.query('DELETE FROM user_sessions WHERE token = $1', [token]).catch(() => {});
-  }
-
   return res.status(204).send();
 }
 

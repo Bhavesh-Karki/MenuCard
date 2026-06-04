@@ -16,6 +16,7 @@ function AuthPage() {
     confirmPassword: '',
   });
   const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const isLogin = mode === 'login';
 
@@ -26,13 +27,14 @@ function AuthPage() {
     }));
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
     setError('');
+    setIsSubmitting(true);
 
     try {
       if (isLogin) {
-        login({
+        await login({
           identifier: form.identifier,
           password: form.password,
         });
@@ -43,13 +45,15 @@ function AuthPage() {
         throw new Error('Passwords do not match.');
       }
 
-      register({
+      await register({
         name: form.name,
         email: form.email,
         password: form.password,
       });
     } catch (authError) {
       setError(authError.message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -150,8 +154,8 @@ function AuthPage() {
             </Form.Group>
           )}
 
-          <Button type="submit" className="primary-action">
-            {isLogin ? 'Login' : 'Register'}
+          <Button type="submit" className="primary-action" disabled={isSubmitting}>
+            {isSubmitting ? 'Please wait...' : isLogin ? 'Login' : 'Register'}
           </Button>
         </Form>
 

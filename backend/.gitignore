@@ -26,4 +26,4 @@ yarn-error.log*
 #database items
 001_enhanced_food_ordering_schema.sql
 schema.sql
-robots.txt
+# !database/schema.sql

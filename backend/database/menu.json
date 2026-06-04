@@ -218,7 +218,7 @@
    {
     "id": 25,
     "title": "Dite Coke",
-    "price": 140,
+    "price": 50,
     "category": "Drinks",
     "rating": 4.6,
     "image": "https://thumbs.dreamstime.com/b/can-diet-coca-cola-bed-ice-over-white-background-swindon-uk-january-74303604.jpg?w=768",
@@ -227,7 +227,7 @@
    {
     "id": 26,
     "title": "Mojito",
-    "price": 140,
+    "price": 110,
     "category": "Drinks",
     "rating": 4.6,
     "image": "https://t4.ftcdn.net/jpg/01/23/32/61/360_F_123326173_I4KRQlgpQT1Hy88mOTZIjcZLDUr0IOeR.jpg",
@@ -236,7 +236,7 @@
     {
       "id": 27,
       "title": "Lemonade",
-      "price": 140,
+      "price": 50,
       "category": "Drinks",
       "rating": 4.6,
       "image": "https://media.istockphoto.com/id/537228258/photo/mason-jar-glasses-of-homemade-lemonade-on-rustic-wood.jpg?s=612x612&w=0&k=20&c=Cb8WMSL5djmvT1Ob3ROTC43BBKWDZ_wlWuaSYvbVw3Q=",
@@ -245,7 +245,7 @@
     {
       "id": 28,
       "title": "Coffee",
-      "price": 140,
+      "price": 60,
       "category": "Drinks",
       "rating": 4.6,
       "image": "https://img.magnific.com/free-photo/cinnamon-other-species-lie-coffee-beans-before-cup_8353-1479.jpg?semt=ais_hybrid&w=740&q=80",

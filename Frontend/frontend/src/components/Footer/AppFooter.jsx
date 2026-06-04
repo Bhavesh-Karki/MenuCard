@@ -18,7 +18,7 @@ In-store self-service touchscreens and digital ordering platforms across its sma
         </div>
 
         <div>
-          <h3>Collaborative Work</h3>
+          <h3>Contributors</h3>
           <p>Developer's profile.</p>
           <div className="footer-icon-row" aria-label="Developer GitHub profiles">
             <a
@@ -55,7 +55,7 @@ In-store self-service touchscreens and digital ordering platforms across its sma
         </div>
 
         <div>
-          <h3>Github Repo</h3>
+          <h3>Github Access</h3>
           <a
             className="footer-icon-link github repo-link"
             href="https://github.com/Bhavesh-Karki/MenuCard"

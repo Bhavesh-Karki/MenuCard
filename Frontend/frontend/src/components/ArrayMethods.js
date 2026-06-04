@@ -24,6 +24,11 @@ function ArrayMethods({ menu, setFilteredMenu, onOrderHistoryClick, onMenuClick 
     onMenuClick();
   };
 
+  const showDrinks = () => {
+    setFilteredMenu(menu.filter(item => item.category === "drinks"));
+    onMenuClick();
+  };
+
   return (
     <div className="array-methods-container">
     <ButtonGroup className="button-group-custom">
@@ -31,6 +36,7 @@ function ArrayMethods({ menu, setFilteredMenu, onOrderHistoryClick, onMenuClick 
       <Button onClick={showVeg} className='custom-btn' variant='secondary'>Veg</Button>
       <Button onClick={showNonVeg} className='custom-btn' variant='secondary'>Non-Veg</Button>
       <Button onClick={showDessert} className='custom-btn' variant='secondary'>Dessert</Button>
+      <Button onClick={showDrinks} className='custom-btn' variant='secondary'>Drinks</Button>
       <Button onClick={onOrderHistoryClick} className='custom-btn' variant='secondary'>Order History</Button>
     </ButtonGroup>
     </div>

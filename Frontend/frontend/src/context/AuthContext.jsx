@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { loginUser, logoutUser, registerUser } from '../services/api';
 
 const AuthContext = createContext(null);
 const USERS_KEY = 'foodOrderingUsers';
@@ -29,12 +30,31 @@ export function AuthProvider({ children }) {
     setUser(readStorage(SESSION_KEY, null));
   }, []);
 
-  const register = ({ name, email, password }) => {
+  const register = async ({ name, email, password }) => {
     const users = readStorage(USERS_KEY, []);
     const cleanEmail = email.trim().toLowerCase();
 
     if (users.some(existingUser => existingUser.email === cleanEmail)) {
       throw new Error('An account already exists for this email.');
+    }
+
+    try {
+      const remoteSession = await registerUser({ name, email: cleanEmail, password });
+      const sessionUser = {
+        ...remoteSession.user,
+        token: remoteSession.token,
+        isGuest: false,
+      };
+
+      writeStorage(SESSION_KEY, sessionUser);
+      localStorage.setItem(TOKEN_KEY, sessionUser.token);
+      setUser(sessionUser);
+      return sessionUser;
+    } catch (error) {
+      if (!String(error.message || '').includes('Failed to fetch')) {
+        throw error;
+      }
+      console.warn('⚠️ Connection to backend failed during register. Falling back to offline localStorage mode:', error.message);
     }
 
     const nextUser = {
@@ -53,7 +73,26 @@ export function AuthProvider({ children }) {
     return nextUser;
   };
 
-  const login = ({ identifier, password }) => {
+  const login = async ({ identifier, password }) => {
+    try {
+      const remoteSession = await loginUser({ identifier, password });
+      const sessionUser = {
+        ...remoteSession.user,
+        token: remoteSession.token,
+        isGuest: false,
+      };
+
+      writeStorage(SESSION_KEY, sessionUser);
+      localStorage.setItem(TOKEN_KEY, sessionUser.token);
+      setUser(sessionUser);
+      return sessionUser;
+    } catch (error) {
+      if (!String(error.message || '').includes('Failed to fetch')) {
+        throw error;
+      }
+      console.warn('⚠️ Connection to backend failed during login. Falling back to offline localStorage mode:', error.message);
+    }
+
     const users = readStorage(USERS_KEY, []);
     const cleanIdentifier = identifier.trim().toLowerCase();
     const matchedUser = users.find(
@@ -94,6 +133,12 @@ export function AuthProvider({ children }) {
   };
 
   const logout = () => {
+    const token = localStorage.getItem(TOKEN_KEY);
+
+    if (token) {
+      logoutUser(token).catch(() => {});
+    }
+
     localStorage.removeItem(SESSION_KEY);
     localStorage.removeItem(TOKEN_KEY);
     setUser(null);

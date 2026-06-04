@@ -8,6 +8,7 @@ const categories = [
   { label: 'Veg', value: 'veg' },
   { label: 'Non-Veg', value: 'non-veg' },
   { label: 'Dessert', value: 'dessert' },
+  { label: 'Drinks', value: 'drinks' },
 ];
 
 function CategoryButtons({ activeCategory, onCategoryChange }) {
