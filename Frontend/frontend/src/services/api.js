@@ -1,4 +1,7 @@
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://menucard-x6t6.onrender.com';
+const RAW_API_BASE_URL = process.env.REACT_APP_API_URL || 'https://menucard-x6t6.onrender.com';
+const API_BASE_URL = RAW_API_BASE_URL.replace(/\/$/, '').endsWith('/api')
+  ? RAW_API_BASE_URL.replace(/\/$/, '')
+  : `${RAW_API_BASE_URL.replace(/\/$/, '')}/api`;
 
 async function request(path, options = {}) {
   const response = await fetch(`${API_BASE_URL}${path}`, {
@@ -9,19 +12,27 @@ async function request(path, options = {}) {
     ...options,
   });
 
-  if (!response.ok) {
-    let message = 'Request failed';
+  const text = await response.text();
+  const contentType = response.headers.get('content-type') || '';
+  const isJson = contentType.includes('application/json');
+  let data = null;
+
+  if (text && isJson) {
     try {
-      const body = await response.json();
-      message = body.message || body.error || JSON.stringify(body);
+      data = JSON.parse(text);
     } catch {
-      const text = await response.text();
-      // Strip HTML tags if the server returned an HTML error page
-      const cleaned = text.replace(/<[^>]*>/g, '').trim();
-      if (cleaned) {
-        message = cleaned;
-      }
+      data = null;
     }
+  }
+
+  if (!response.ok) {
+    let message = data?.message || data?.error || 'Request failed';
+
+    if (!data && text) {
+      const cleaned = text.replace(/<[^>]*>/g, '').trim();
+      message = cleaned || message;
+    }
+
     throw new Error(message);
   }
 
@@ -29,7 +40,7 @@ async function request(path, options = {}) {
     return null;
   }
 
-  return response.json();
+  return data ?? text;
 }
 
 export function fetchMenuItems() {

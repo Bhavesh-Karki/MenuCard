@@ -15,8 +15,6 @@ import {
   deleteOrder,
   fetchMenuItems,
   getOrders,
-  markOrderPaid,
-  createRazorpayOrder,
   verifyRazorpayPayment,
 } from '../../services/api';
 import OrderHistoryPage from '../OrderHistory/OrderHistoryPage';
@@ -77,20 +75,6 @@ function normalizeMenuItem(item) {
 
 function isDatabaseUser(user) {
   return Boolean(user && !user.isGuest && Number.isInteger(Number(user.id)));
-}
-
-function loadRazorpayScript() {
-  if (window.Razorpay) {
-    return Promise.resolve(true);
-  }
-
-  return new Promise(resolve => {
-    const script = document.createElement('script');
-    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-    script.onload = () => resolve(true);
-    script.onerror = () => resolve(false);
-    document.body.appendChild(script);
-  });
 }
 
 function ConfettiBurst() {
@@ -320,86 +304,86 @@ function Home() {
     setOrders(nextOrders);
   };
 
-  const handlePayNow = async order => {
-    try {
-      // If guest user/offline, just complete simulated payment immediately.
-      if (!isDatabaseUser(user) || !Number.isInteger(Number(order.id))) {
-        updatePaidOrder(order.id);
-        setNotice('Payment Successful (Offline Mode)');
-        setPaymentSuccess(true);
-        window.setTimeout(() => setPaymentSuccess(false), 2200);
-        return;
-      }
+  // const handlePayNow = async order => {
+  //   try {
+  //     // If guest user/offline, just complete simulated payment immediately.
+  //     if (!isDatabaseUser(user) || !Number.isInteger(Number(order.id))) {
+  //       updatePaidOrder(order.id);
+  //       setNotice('Payment Successful (Offline Mode)');
+  //       setPaymentSuccess(true);
+  //       window.setTimeout(() => setPaymentSuccess(false), 2200);
+  //       return;
+  //     }
 
-      setNotice('Initializing payment...');
-      // Request Razorpay/Simulated order from backend
-      const paymentOrder = await createRazorpayOrder(order.id, user.id);
+  //     setNotice('Initializing payment...');
+  //     // Request Razorpay/Simulated order from backend
+  //     const paymentOrder = await createRazorpayOrder(order.id, user.id);
 
-      // Check if simulation mode is active (backend doesn't have credentials)
-      if (paymentOrder.simulation) {
-        console.log('Simulation mode detected from backend payment response.');
-        if (window.confirm(`Razorpay credentials are not configured on the server. Proceed with Simulated Payment for Order #${order.id}?`)) {
-          setNotice('Processing simulated payment...');
-          await verifyRazorpayPayment(order.id, user.id, {
-            razorpay_order_id: paymentOrder.razorpay_order_id,
-            razorpay_payment_id: 'sim_pay_' + Math.random().toString(36).substring(7),
-            razorpay_signature: 'sim_signature',
-          });
+  //     // Check if simulation mode is active (backend doesn't have credentials)
+  //     if (paymentOrder.simulation) {
+  //       console.log('Simulation mode detected from backend payment response.');
+  //       if (window.confirm(`Razorpay credentials are not configured on the server. Proceed with Simulated Payment for Order #${order.id}?`)) {
+  //         setNotice('Processing simulated payment...');
+  //         await verifyRazorpayPayment(order.id, user.id, {
+  //           razorpay_order_id: paymentOrder.razorpay_order_id,
+  //           razorpay_payment_id: 'sim_pay_' + Math.random().toString(36).substring(7),
+  //           razorpay_signature: 'sim_signature',
+  //         });
 
-          updatePaidOrder(order.id);
-          setNotice('Payment Successful (Simulated)');
-          setPaymentSuccess(true);
-          window.setTimeout(() => setPaymentSuccess(false), 2200);
-        } else {
-          setNotice('Payment cancelled.');
-        }
-        return;
-      }
+  //         updatePaidOrder(order.id);
+  //         setNotice('Payment Successful (Simulated)');
+  //         setPaymentSuccess(true);
+  //         window.setTimeout(() => setPaymentSuccess(false), 2200);
+  //       } else {
+  //         setNotice('Payment cancelled.');
+  //       }
+  //       return;
+  //     }
 
-      // Real Razorpay flow
-      const scriptLoaded = await loadRazorpayScript();
-      if (!scriptLoaded) {
-        setNotice('Razorpay checkout could not be loaded. Please try again.');
-        return;
-      }
+  //     // Real Razorpay flow
+  //     const scriptLoaded = await loadRazorpayScript();
+  //     if (!scriptLoaded) {
+  //       setNotice('Razorpay checkout could not be loaded. Please try again.');
+  //       return;
+  //     }
 
-      const razorpay = new window.Razorpay({
-        key: paymentOrder.key,
-        amount: paymentOrder.amount,
-        currency: paymentOrder.currency,
-        name: paymentOrder.name || 'Menu Card',
-        description: paymentOrder.description || `Order #${order.id}`,
-        image: '/menucard-logo.png',
-        handler: async response => {
-          try {
-            await verifyRazorpayPayment(order.id, user.id, response);
-            updatePaidOrder(order.id);
-            setNotice('Payment Successful');
-            setPaymentSuccess(true);
-            window.setTimeout(() => setPaymentSuccess(false), 2200);
-          } catch (error) {
-            console.error('Payment verification error:', error);
-            setNotice('Payment succeeded, but order status could not be verified on the server.');
-          }
-        },
-        prefill: {
-          name: user?.name || '',
-          email: user?.email || '',
-        },
-        theme: {
-          color: '#ff7300',
-        },
-        modal: {
-          ondismiss: () => setNotice('Payment cancelled.'),
-        },
-      });
+  //     const razorpay = new window.Razorpay({
+  //       key: paymentOrder.key,
+  //       amount: paymentOrder.amount,
+  //       currency: paymentOrder.currency,
+  //       name: paymentOrder.name || 'Menu Card',
+  //       description: paymentOrder.description || `Order #${order.id}`,
+  //       image: '/menucard-logo.png',
+  //       handler: async response => {
+  //         try {
+  //           await verifyRazorpayPayment(order.id, user.id, response);
+  //           updatePaidOrder(order.id);
+  //           setNotice('Payment Successful');
+  //           setPaymentSuccess(true);
+  //           window.setTimeout(() => setPaymentSuccess(false), 2200);
+  //         } catch (error) {
+  //           console.error('Payment verification error:', error);
+  //           setNotice('Payment succeeded, but order status could not be verified on the server.');
+  //         }
+  //       },
+  //       prefill: {
+  //         name: user?.name || '',
+  //         email: user?.email || '',
+  //       },
+  //       theme: {
+  //         color: '#ff7300',
+  //       },
+  //       modal: {
+  //         ondismiss: () => setNotice('Payment cancelled.'),
+  //       },
+  //     });
 
-      razorpay.open();
-    } catch (error) {
-      console.error('Pay Now error:', error);
-      setNotice(error.message || 'Failed to initialize payment.');
-    }
-  };
+  //     razorpay.open();
+  //   } catch (error) {
+  //     console.error('Pay Now error:', error);
+  //     setNotice(error.message || 'Failed to initialize payment.');
+  //   }
+  // };
 
   const handlePayAll = async pendingOrders => {
     try {
