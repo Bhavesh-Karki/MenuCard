@@ -33,7 +33,8 @@ MenuCard is a full-stack web application that helps restaurants manage their men
 | Backend   | Node.js, Express                  |
 | Database  | PostgreSQL (`pg`)                 |
 | Tools     | npm, dotenv, Git                  |
-| Hosting   | Vercel (frontend)                 |
+| Hosting   | Vercel (frontend),  Render (backend), Neon (database)                  |
+
 
 ---
 
