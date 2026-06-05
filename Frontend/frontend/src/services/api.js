@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://menucard-x6t6.onrender.com';
 
 async function request(path, options = {}) {
   const response = await fetch(`${API_BASE_URL}${path}`, {
