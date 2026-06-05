@@ -27,3 +27,5 @@ yarn-error.log*
 001_enhanced_food_ordering_schema.sql
 schema.sql
 # !database/schema.sql
+/neon-postgres
+

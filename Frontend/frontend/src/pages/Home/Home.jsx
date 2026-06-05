@@ -526,7 +526,7 @@ function Home() {
               className="show-more-button"
               onClick={() => setShowAllItems(current => !current)}
             >
-              {showAllItems ? 'Show Less △ ' : 'Show More ▽'}
+              {showAllItems ? 'Show Less ↑ ' : 'Show More ↓'}
             </Button>
           )}
         </section>

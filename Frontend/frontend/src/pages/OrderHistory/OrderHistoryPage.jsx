@@ -106,7 +106,7 @@ function OrderHistoryPage({
           {pendingOrders.length > 0 && (
             <div className="pay-together-card">
               <div className="pay-together-info">
-                <span className="pay-together-title">Pay Together</span>
+                <span className="pay-together-title">Pay </span>
                 <span className="pay-together-subtitle">
                   You have <strong>{pendingOrders.length}</strong> unpaid order(s). You can pay them all at once.
                 </span>
@@ -114,7 +114,7 @@ function OrderHistoryPage({
               <div className="pay-together-meta">
                 <span className="pay-together-amount">Total: Rs. {totalPendingPrice.toFixed(2)}</span>
                 <Button className="pay-together-btn" onClick={() => onPayAll(pendingOrders)}>
-                  Pay Now (All Orders)
+                  Pay Now (Rs. {totalPendingPrice.toFixed(2)})
                 </Button>
               </div>
             </div>
